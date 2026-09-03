@@ -6,7 +6,7 @@ permalink: /privacy/
 
 # Personvernerklæring for FotballLoggen
 
-**Sist oppdatert: 12. mai 2026**
+**Sist oppdatert: 3. september 2026**
 
 FotballLoggen ("appen") er en mobilapp for å registrere og holde oversikt over treningsøkter og kamper for barn som spiller fotball. Denne personvernerklæringen forklarer hvilke personopplysninger appen behandler, hvordan de behandles, og hvilke rettigheter du har.
 
@@ -14,7 +14,7 @@ FotballLoggen ("appen") er en mobilapp for å registrere og holde oversikt over 
 
 ## Kort oppsummert
 
-FotballLoggen krever at du logger inn med e-post + passord eller Apple ID. Data du legger inn – egne barn, lag, treningsøkter, kamper og skader – lagres i appens skytjeneste (Supabase) slik at flere foreldre kan dele samme husholdning. Appen samler ikke inn lokasjon, kontaktdata, helsedata eller bruksstatistikk. Det vises ingen reklame, og data deles ikke med tredjeparter for markedsføring eller analyse.
+FotballLoggen krever at du logger inn med e-post + passord eller Apple ID. Data du legger inn – egne barn, lag, treningsøkter, kamper og skader – lagres i appens skytjeneste (Supabase) slik at flere foreldre kan dele samme husholdning. Appen henter ikke posisjon, kontaktlista di, data fra Helse-appen eller bruksstatistikk. Skadeperioder du selv registrerer på et barn lagres derimot, og regnes som helseopplysninger. Det vises ingen reklame, og data deles ikke med tredjeparter for markedsføring eller analyse.
 
 ## Hvilke opplysninger behandles
 
@@ -115,7 +115,7 @@ Spørsmål om personvern eller forespørsler om rettigheter? Send e-post til **i
 
 # Privacy Policy – FotballLoggen (English)
 
-**Last updated: May 12, 2026**
+**Last updated: September 3, 2026**
 
 FotballLoggen ("the app") is a mobile app for tracking training sessions and matches for children who play football. This privacy policy explains what personal data the app processes, how it is processed, and your rights.
 
@@ -123,7 +123,7 @@ FotballLoggen ("the app") is a mobile app for tracking training sessions and mat
 
 ## Summary
 
-FotballLoggen requires sign-in via email + password or Apple ID. Data you enter – your children, teams, training sessions, matches, and injuries – is stored in the app's cloud backend (Supabase) so that multiple parents can share the same household. The app does not collect location, contacts, health data, or usage analytics. No ads are shown, and data is not shared with third parties for marketing or analytics.
+FotballLoggen requires sign-in via email + password or Apple ID. Data you enter – your children, teams, training sessions, matches, and injuries – is stored in the app's cloud backend (Supabase) so that multiple parents can share the same household. The app does not access your location, your contacts, Apple Health data, or usage analytics. Injury periods you record for a child are stored, and count as health information. No ads are shown, and data is not shared with third parties for marketing or analytics.
 
 ## What data is processed
 
