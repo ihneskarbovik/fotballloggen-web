@@ -56,6 +56,8 @@ Data lagres hos **Supabase Inc.** (datterselskap av Supabase Inc., USA), som er 
 
 Apple Inc. behandler kun e-postadressen din og en Apple-bruker-ID dersom du logger inn via Apple Sign-in. Du kan velge "Hide My Email" hos Apple – da får appen kun en anonymisert relay-adresse.
 
+Sender du inn en tilbakemelding fra appen, videresendes meldingen som e-post via **Resend Inc.** (USA). Da behandles meldingsteksten, e-postadressen din, hvilken plattform og appversjon du bruker, og hvilken rolle du har. Overføringen til USA skjer på samme grunnlag som over.
+
 **Ingen andre tredjeparter har tilgang.** Appen bruker ikke analyseverktøy, sporings-SDK-er, annonse-nettverk eller markedsføringsverktøy.
 
 Innenfor appen kan andre medlemmer av din husholdning (medforeldre og eventuelt barn med egen konto) se data om barn og aktiviteter i samme husholdning. Du kontrollerer hvem som er medlem ved å sende eller trekke tilbake invitasjoner.
@@ -86,8 +88,8 @@ For å utøve rettighetene: send e-post til **ihne@hotmail.com**. Forespørsler 
 ## Sletting av konto
 
 Du sletter kontoen din ved å:
-1. Sende e-post til ihne@hotmail.com med "Slett konto" som emne, eller
-2. Bruke "Slett konto"-funksjonen i appens innstillinger (når implementert).
+1. Gå til Innstillinger i appen og velg "Slett kontoen min". Har du ikke opprettet en familie ennå, ligger valget på velkomstskjermen etter innlogging.
+2. Eventuelt sende e-post til ihne@hotmail.com med "Slett konto" som emne.
 
 Sletting er permanent og kan ikke angres.
 
@@ -161,6 +163,8 @@ Data is stored with **Supabase Inc.** (USA), the app's data processor. Transfers
 
 Apple Inc. processes only your email and Apple user ID if you use Apple Sign-in. You may choose "Hide My Email" – the app then receives only a relay address.
 
+If you submit feedback from the app, the message is forwarded by email via **Resend Inc.** (USA). This processes the message text, your email address, your platform and app version, and your role. Transfers to the US rely on the same safeguards as above.
+
 **No other third parties have access.** No analytics, tracking SDKs, or ad networks are used.
 
 Within the app, other members of your household can see data about children and activities in the same household. You control membership via invitations.
@@ -182,7 +186,7 @@ To exercise these rights, email **ihne@hotmail.com**. Requests are answered with
 
 ## Deleting your account
 
-Email ihne@hotmail.com with subject "Delete account", or use the in-app delete function (when available). Deletion is permanent.
+In the app, go to Settings and choose "Slett kontoen min" (Delete my account). If you have not created a family yet, the option is on the welcome screen after sign-in. You may also email ihne@hotmail.com with the subject "Delete account". Deletion is permanent.
 
 ## Security
 
