@@ -14,7 +14,7 @@ FotballLoggen ("appen") er en mobilapp for å registrere og holde oversikt over 
 
 ## Kort oppsummert
 
-FotballLoggen krever at du logger inn med e-post + passord eller Apple ID. Data du legger inn – egne barn, lag, treningsøkter, kamper, skader og eventuelle bilder – lagres i appens skytjeneste (Supabase) slik at flere foreldre kan dele samme husholdning. Appen samler ikke inn lokasjon, kontaktdata, helsedata eller bruksstatistikk. Det vises ingen reklame, og data deles ikke med tredjeparter for markedsføring eller analyse.
+FotballLoggen krever at du logger inn med e-post + passord eller Apple ID. Data du legger inn – egne barn, lag, treningsøkter, kamper og skader – lagres i appens skytjeneste (Supabase) slik at flere foreldre kan dele samme husholdning. Appen samler ikke inn lokasjon, kontaktdata, helsedata eller bruksstatistikk. Det vises ingen reklame, og data deles ikke med tredjeparter for markedsføring eller analyse.
 
 ## Hvilke opplysninger behandles
 
@@ -40,7 +40,6 @@ FotballLoggen krever at du logger inn med e-post + passord eller Apple ID. Data 
 - Dato, varighet, lag, aldersgruppe, notater
 - Kampresultat, mål, assists, motstander (for kamper)
 - Cup-detaljer (navn, sluttdato, sted, kampstadium)
-- Bilde du selv velger å laste opp (lagret som fil i Supabase Storage)
 
 **Barn-pålogging (valgfritt):**
 - Hvis du oppretter konto til et barn genereres en intern e-postadresse på domenet `kids.fotballloggen.local`. Denne er kun et teknisk identifikasjonsnummer og brukes ikke til kommunikasjon. Barnet logger inn med brukernavn + passord.
@@ -53,7 +52,7 @@ Barnedata (navn, fødselsår, skader, treningsstatistikk) behandles på grunnlag
 
 ## Hvor lagres data, og hvem har tilgang
 
-Data lagres hos **Supabase Inc.** (datterselskap av Supabase Inc., USA), som er appens databehandler. Supabase drifter PostgreSQL-databasen og Storage-bøtten der appens data og bilder ligger. Dataoverføring til USA skjer i henhold til EU-Kommisjonens standard contractual clauses (SCC) og EU–US Data Privacy Framework.
+Data lagres hos **Supabase Inc.** (datterselskap av Supabase Inc., USA), som er appens databehandler. Supabase drifter PostgreSQL-databasen der appens data ligger. Dataoverføring til USA skjer i henhold til EU-Kommisjonens standard contractual clauses (SCC) og EU–US Data Privacy Framework.
 
 Apple Inc. behandler kun e-postadressen din og en Apple-bruker-ID dersom du logger inn via Apple Sign-in. Du kan velge "Hide My Email" hos Apple – da får appen kun en anonymisert relay-adresse.
 
@@ -65,10 +64,8 @@ Innenfor appen kan andre medlemmer av din husholdning (medforeldre og eventuelt 
 
 Data lagres så lenge du har en aktiv konto. Når du sletter kontoen, slettes:
 - Din forelder-konto og profil
-- Husholdninger der du er eneste forelder, og alt innhold (barn, lag, aktiviteter, bilder)
+- Husholdninger der du er eneste forelder, og alt innhold (barn, lag, aktiviteter)
 - Husholdninger med andre foreldre består videre uten din konto
-
-Bilder lagres i Supabase Storage frem til den tilhørende aktiviteten slettes.
 
 Sikkerhetslogger hos Supabase (innloggingstider, IP-adresser) lagres i opptil 30 dager før de slettes automatisk.
 
@@ -124,7 +121,7 @@ FotballLoggen ("the app") is a mobile app for tracking training sessions and mat
 
 ## Summary
 
-FotballLoggen requires sign-in via email + password or Apple ID. Data you enter – your children, teams, training sessions, matches, injuries, and any photos – is stored in the app's cloud backend (Supabase) so that multiple parents can share the same household. The app does not collect location, contacts, health data, or usage analytics. No ads are shown, and data is not shared with third parties for marketing or analytics.
+FotballLoggen requires sign-in via email + password or Apple ID. Data you enter – your children, teams, training sessions, matches, and injuries – is stored in the app's cloud backend (Supabase) so that multiple parents can share the same household. The app does not collect location, contacts, health data, or usage analytics. No ads are shown, and data is not shared with third parties for marketing or analytics.
 
 ## What data is processed
 
@@ -150,7 +147,6 @@ FotballLoggen requires sign-in via email + password or Apple ID. Data you enter 
 - Date, duration, team, age group, notes
 - Match result, goals, assists, opponent (for matches)
 - Cup details (name, end date, location, stage)
-- Photos you choose to upload (stored as files in Supabase Storage)
 
 **Child sign-in (optional):**
 - If you create an account for a child, an internal email on `kids.fotballloggen.local` is generated. It is a technical identifier only and is never used for communication.
@@ -176,7 +172,7 @@ Data is retained as long as your account is active. Deleting your account remove
 - Households where you are the sole parent, including all content
 - Households with other parents remain, minus your account
 
-Photos are retained until the corresponding activity is deleted. Supabase security logs (sign-in times, IP) are retained for up to 30 days.
+Supabase security logs (sign-in times, IP) are retained for up to 30 days.
 
 ## Your rights (GDPR)
 
