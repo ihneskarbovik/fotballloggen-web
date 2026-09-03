@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Åpne FotballLoggen</title>
+<style>
+  :root {
+    color-scheme: light;
+    --primary: #5C7A4D;
+    --primary-dark: #46603A;
+    --primary-soft: #E6EBDC;
+    --bg: #F7F1E6;
+    --surface: #FFFCF5;
+    --sunken: #E8DDC7;
+    --text: #2E2419;
+    --muted: #6F6049;
+    --border: #E0D4BE;
+    --on-primary: #FBF8F1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    padding: 24px 20px calc(32px + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: center;
+  }
+  .wrap { width: 100%; max-width: 420px; }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .brand img {
+    width: 48px; height: 48px; border-radius: 12px; display: block;
+    background: var(--primary-soft);
+  }
+  .brand span { font-weight: 650; font-size: 17px; letter-spacing: -0.01em; }
+  .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--muted); text-transform: uppercase; margin: 0 0 8px;
+  }
+  h1 {
+    font-size: 27px; line-height: 1.2; letter-spacing: -0.02em;
+    margin: 0 0 12px; font-weight: 700;
+  }
+  .lead { color: var(--muted); margin: 0 0 24px; font-size: 16px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .code-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--muted); margin: 0 0 6px;
+  }
+  .code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 30px; font-weight: 600; letter-spacing: 0.06em;
+    margin: 0 0 14px; word-break: break-all;
+  }
+  .btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 52px; padding: 12px 18px;
+    border-radius: 14px; border: 1px solid transparent;
+    font-size: 16px; font-weight: 600; font-family: inherit;
+    text-decoration: none; cursor: pointer;
+    margin-bottom: 12px; text-align: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary { background: var(--primary); color: var(--on-primary); }
+  .btn-primary:active { background: var(--primary-dark); }
+  .btn-secondary {
+    background: var(--surface); color: var(--text); border-color: var(--border);
+  }
+  .btn-secondary:active { background: var(--sunken); }
+  .btn-copy {
+    background: var(--primary-soft); color: var(--primary-dark);
+    min-height: 44px; font-size: 15px; margin-bottom: 0;
+  }
+  .hint {
+    background: var(--primary-soft);
+    border-radius: 14px; padding: 16px 18px;
+    font-size: 15px; margin-bottom: 20px;
+  }
+  .hint strong { display: block; margin-bottom: 4px; }
+  h2 {
+    font-size: 15px; font-weight: 700; margin: 28px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  ol { margin: 0; padding-left: 22px; color: var(--muted); font-size: 15px; }
+  ol li { margin-bottom: 8px; }
+  ol code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--sunken); border-radius: 5px; padding: 1px 5px;
+    color: var(--text); font-size: 0.94em;
+  }
+  footer {
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--muted);
+  }
+  footer a { color: var(--primary-dark); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <img src="../icon.png" alt="" width="48" height="48">
+    <span>FotballLoggen</span>
+  </div>
+
+  <p class="eyebrow" id="eyebrow">ÅPNER APPEN</p>
+  <h1 id="title">Et øyeblikk…</h1>
+  <p class="lead" id="lead">Vi prøver å åpne FotballLoggen på telefonen din.</p>
+
+  <!-- Vist når appen ikke åpnet seg av seg selv -->
+  <div class="hint" id="failHint" hidden>
+    <strong>Åpnet ikke appen seg?</strong>
+    Da har du den sannsynligvis ikke installert ennå. Bruk knappene under.
+  </div>
+
+  <!-- Invitasjonskode (kun i invitasjons-modus) -->
+  <div class="card" id="codeCard" hidden>
+    <p class="code-label">INVITASJONSKODE</p>
+    <p class="code" id="codeValue">–</p>
+    <button class="btn btn-copy" id="copyBtn" type="button">Kopier koden</button>
+  </div>
+
+  <a class="btn btn-primary" id="openBtn" href="#">Åpne i FotballLoggen</a>
+  <a class="btn btn-secondary" id="downloadBtn" href="#" hidden>Last ned appen</a>
+
+  <div class="card" id="noDownload" hidden>
+    <p style="margin:0;font-size:15px;color:var(--muted)">
+      Appen er ikke publisert i App Store ennå. Be den som inviterte deg
+      om en TestFlight-invitasjon på e-post.
+    </p>
+  </div>
+
+  <div id="stepsInvite" hidden>
+    <h2>Slik gjør du det manuelt</h2>
+    <ol>
+      <li class="step-download">Last ned FotballLoggen med knappen over.</li>
+      <li>Åpne appen og velg <code>Jeg har en invitasjonskode</code>.</li>
+      <li>Skriv inn koden over, og fyll ut navn, e-post og passord.</li>
+    </ol>
+  </div>
+
+  <div id="stepsChild" hidden>
+    <h2>Slik gjør du det manuelt</h2>
+    <ol>
+      <li class="step-download">Last ned FotballLoggen med knappen over.</li>
+      <li>Åpne appen og velg <code>Jeg er et barn</code>.</li>
+      <li>Trykk <code>Skann QR-kode</code> og skann QR-en på forelderens
+          telefon på nytt.</li>
+    </ol>
+  </div>
+
+  <div id="generic" hidden>
+    <h2>Denne lenken mangler informasjon</h2>
+    <ol>
+      <li>Skann QR-koden på nytt – hele koden må være innenfor rammen.</li>
+      <li>Får du det ikke til, ber du forelderen lage en ny QR-kode.</li>
+    </ol>
+  </div>
+
+  <noscript>
+    <div class="card">
+      <p style="margin:0">
+        JavaScript er slått av i nettleseren din. Åpne FotballLoggen manuelt –
+        invitasjonskoden står etter <code>code=</code> i adressefeltet over.
+      </p>
+    </div>
+  </noscript>
+
+  <footer>
+    <a href="../">Om FotballLoggen</a> ·
+    <a href="../support">Support</a> ·
+    <a href="../privacy">Personvern</a>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------
+   * KONFIGURASJON – dette er de eneste linjene du trenger å endre.
+   *
+   * DOWNLOAD_URL: hvor folk som ikke har appen skal sendes.
+   *   Beta:  din offentlige TestFlight-lenke
+   *          (App Store Connect → TestFlight → Public Link)
+   *   Live:  https://apps.apple.com/no/app/id6766041646
+   *
+   * Så lenge URL-en inneholder "XXXX" regnes den som ikke satt, og
+   * siden viser en pen forklaring i stedet for en ødelagt lenke.
+   *
+   * AUTO_OPEN: true = prøv å åpne appen automatisk ved innlasting.
+   *   Sett til false hvis du heller vil at brukeren skal trykke selv
+   *   (unngår «Safari kan ikke åpne siden»-dialogen for folk uten appen).
+   * ------------------------------------------------------------------ */
+  var DOWNLOAD_URL = "https://testflight.apple.com/join/XXXXXXXX";
+  var AUTO_OPEN = true;
+
+  var SCHEME = "fotballloggen://";
+  var params = new URLSearchParams(window.location.search);
+  var code = (params.get("code") || "").trim().toUpperCase();
+  var token = (params.get("token") || "").trim();
+  var noAuto = params.get("noauto") === "1";
+
+  var el = function (id) { return document.getElementById(id); };
+  var show = function (id) { el(id).hidden = false; };
+
+  var downloadReady = DOWNLOAD_URL.indexOf("XXXX") === -1;
+  if (downloadReady) {
+    el("downloadBtn").href = DOWNLOAD_URL;
+    show("downloadBtn");
+  } else {
+    show("noDownload");
+    // Ingen nedlastingsknapp å vise til – juster steg 1 så teksten
+    // ikke peker på en knapp som ikke finnes.
+    var steps = document.querySelectorAll(".step-download");
+    for (var i = 0; i < steps.length; i++) {
+      steps[i].textContent = "Skaff deg FotballLoggen (se boksen over).";
+    }
+  }
+
+  var deeplink = null;
+
+  if (code) {
+    deeplink = SCHEME + "accept-invite?code=" + encodeURIComponent(code);
+    el("eyebrow").textContent = "INVITASJON";
+    el("title").textContent = "Du er invitert til en familie";
+    el("lead").textContent =
+      "Åpne FotballLoggen for å bli med som medforelder.";
+    el("codeValue").textContent = code;
+    show("codeCard");
+    show("stepsInvite");
+  } else if (token) {
+    deeplink = SCHEME + "child-setup?token=" + encodeURIComponent(token);
+    el("eyebrow").textContent = "SETT OPP KONTO";
+    el("title").textContent = "Klart for deg";
+    el("lead").textContent =
+      "Åpne FotballLoggen for å velge passord og komme i gang.";
+    show("stepsChild");
+  } else {
+    el("eyebrow").textContent = "UGYLDIG LENKE";
+    el("title").textContent = "Fant ingen kode i lenken";
+    el("lead").textContent =
+      "QR-koden ble antakelig ikke lest helt riktig.";
+    el("openBtn").hidden = true;
+    show("generic");
+  }
+
+  if (deeplink) {
+    el("openBtn").href = deeplink;
+  }
+
+  /* Kopier koden – med fallback for nettlesere uten Clipboard API. */
+  el("copyBtn").addEventListener("click", function () {
+    var btn = this;
+    var done = function () {
+      btn.textContent = "Kopiert!";
+      setTimeout(function () { btn.textContent = "Kopier koden"; }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, fallback);
+    } else {
+      fallback();
+    }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = code;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) { /* ignorer */ }
+      document.body.removeChild(ta);
+    }
+  });
+
+  /* Automatisk forsøk på å åpne appen.
+   *
+   * Vi gjør dette bare på mobil – på desktop finnes appen uansett ikke,
+   * og en feilende scheme-navigasjon der er bare støy. Hvis siden fortsatt
+   * er synlig etter et par sekunder, antar vi at appen ikke er installert
+   * og løfter frem nedlastingsalternativet. */
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (deeplink && AUTO_OPEN && !noAuto && isMobile) {
+    var settled = false;
+    var settle = function () { settled = true; };
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") settle();
+    });
+    window.addEventListener("pagehide", settle);
+
+    setTimeout(function () { window.location.href = deeplink; }, 300);
+    setTimeout(function () {
+      if (!settled && document.visibilityState === "visible") {
+        show("failHint");
+      }
+    }, 2500);
+  } else if (deeplink && !isMobile) {
+    el("eyebrow").textContent = "ÅPNE PÅ TELEFONEN";
+    el("lead").textContent =
+      "FotballLoggen er en mobilapp. Skann QR-koden med telefonen din, " +
+      "eller bruk koden manuelt i appen.";
+  }
+})();
+</script>
+</body>
+</html>
